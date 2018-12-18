@@ -675,13 +675,19 @@ class Line(object):
         # are different from each other.
         #######################################################################
 
-        dy = (self.end.y - self.start.y)
-        dx = (self.end.x - self.start.x)
-        slope = dy / dx
-
         dy2 = (line2.end.y - line2.start.y)
         dx2 = (line2.end.x - line2.start.x)
-        slope2 = dy2 / dx2
+        if dx2 == 0:
+            slope2 = math.inf
+        else:
+            slope2 = dy2 / dx2
+
+        dy = (self.end.y - self.start.y)
+        dx = (self.end.x - self.start.x)
+        if dx == 0:
+            slope = math.inf
+        else:
+            slope = dy / dx
 
         a = slope
         b = slope2
@@ -730,6 +736,7 @@ class Line(object):
         #        They include the Example in the above doc-string.
         # ---------------------------------------------------------------------
 
+        return Line(self.start.clone(), self.end.clone())
 
 ###############################################################################
 # The TEST functions for the  Line  class begin here.
