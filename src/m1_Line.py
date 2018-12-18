@@ -226,6 +226,9 @@ class Line(object):
         #        They include the Example in the above doc-string.
         # ---------------------------------------------------------------------
 
+        self.initstart = start
+        self.initend = end
+
         self.start = start.clone()
         self.end = end.clone()
         self.num_clone = 0
@@ -639,7 +642,7 @@ class Line(object):
           :rtype: bool
         """
         # ---------------------------------------------------------------------
-        # TODO: 12.
+        # DONE: 12.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -693,9 +696,9 @@ class Line(object):
         b = slope2
 
         if round(a, 12) == round(b, 12):
-            return 'True'
+            return True
         else:
-            return 'False'
+            return False
 
     def reset(self):
         """
@@ -727,7 +730,7 @@ class Line(object):
             print(line2)  # Should print: Line[(0, 1), (10, 20)]
         """
         # ---------------------------------------------------------------------
-        # TODO: 13.
+        # DONE: 13.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -736,7 +739,8 @@ class Line(object):
         #        They include the Example in the above doc-string.
         # ---------------------------------------------------------------------
 
-        return Line(self.start.clone(), self.end.clone())
+        self.start = self.initstart
+        self.end = self.initend
 
 ###############################################################################
 # The TEST functions for the  Line  class begin here.
